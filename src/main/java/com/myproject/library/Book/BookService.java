@@ -16,7 +16,7 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public Book findById(Integer bookId) {
+    public Book findById(int bookId) {
         Optional<Book> result = bookRepository.findById(bookId);
 
         Book theBook = null;
@@ -43,7 +43,7 @@ public class BookService {
         bookRepository.save(theBook);
     }
 
-    public void deleteBook(Integer theId) {
+    public void deleteBook(int theId) {
         boolean exists = bookRepository.existsById(theId);
         if (!exists) {
             throw new IllegalStateException("Book with id " + theId + " does not exists.");
@@ -53,7 +53,7 @@ public class BookService {
     }
 
     @Transactional
-    public void updateBook(Integer bookId, String theTitle, String theAuthor, Integer theCopies) {
+    public void updateBook(int bookId, String theTitle, String theAuthor, int theCopies) {
         Optional<Book> checkBook = bookRepository.findById(bookId);
 
         if (!checkBook.isPresent()) {
