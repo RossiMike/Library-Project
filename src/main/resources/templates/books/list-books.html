@@ -46,7 +46,7 @@
                                     <button type="submit" class="btn btn-info btn-sm me-1" style="float:left;">Update</button>
     
                                 </form>
-                                <form action="#" th:action="@{/books/delete}" method="POST">
+                                <form action="#" th:action="@{/books/delete}" method="GET">
                                     <input type="hidden" name="bookId" th:value="${tempBook.id}">
                                     <button type="submit" class="btn btn-danger btn-sm"
                                         onclick="if (!(confirm('Are you sure?'))) return false">

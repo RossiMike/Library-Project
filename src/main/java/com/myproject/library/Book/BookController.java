@@ -4,13 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PutMapping;
 
 
 
@@ -18,9 +16,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping("/books")
 public class BookController {
 
-    public final BookService bookService;
+    public final BookServiceImpl bookService;
 
-    public BookController(BookService bookService) {
+    public BookController(BookServiceImpl bookService) {
         this.bookService = bookService;
     }
 
@@ -28,7 +26,7 @@ public class BookController {
     @GetMapping("/list")
     public String listBooks(Model theModel) {
 
-        List<Book> theBooks = bookService.getBooks();
+        List<Book> theBooks = bookService.findAll();
 
         theModel.addAttribute("books", theBooks);
 
@@ -45,9 +43,10 @@ public class BookController {
         return "books/book-form";
     }
     
-    @PostMapping("/add")
+    @PostMapping("/save")
     public String registerNewBook(@ModelAttribute("book") Book theBook) {
-        bookService.addNewBook(theBook);
+        
+        bookService.save(theBook);
 
         return "redirect:/books/list";
     }
@@ -62,24 +61,13 @@ public class BookController {
         return "books/book-form";
     }
     
-    @PostMapping("/delete")
+    @GetMapping("/delete")
     public String deleteBook(@RequestParam("bookId") int bookId) {
 
-        bookService.deleteBook(bookId);
+        bookService.deleteById(bookId);
 
         return "redirect:/books/list";
     }
 
-    @PutMapping("update/{bookId}")
-    public void updateBook(
-        @PathVariable("bookId") int bookId,
-        @RequestParam String theTitle, 
-        @RequestParam String theAuthor, 
-        @RequestParam int theCopies){
-
-        bookService.updateBook(bookId, theTitle, theAuthor, theCopies);
-            
-            
-    }
 
 }
