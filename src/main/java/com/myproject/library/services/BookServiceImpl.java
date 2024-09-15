@@ -1,6 +1,9 @@
-package com.myproject.library.Book;
+package com.myproject.library.services;
 
 import org.springframework.stereotype.Service;
+
+import com.myproject.library.entities.Book;
+import com.myproject.library.repositories.BookRepository;
 
 import java.util.List;
 import java.util.Optional;

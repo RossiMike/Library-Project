@@ -1,4 +1,4 @@
-package com.myproject.library.Book;
+package com.myproject.library.entities;
 
 
 import jakarta.persistence.Column;

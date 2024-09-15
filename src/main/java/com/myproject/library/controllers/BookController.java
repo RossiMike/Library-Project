@@ -1,4 +1,4 @@
-package com.myproject.library.Book;
+package com.myproject.library.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,6 +9,9 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.myproject.library.entities.Book;
+import com.myproject.library.services.BookServiceImpl;
 
 
 
@@ -30,7 +33,7 @@ public class BookController {
 
         theModel.addAttribute("books", theBooks);
 
-        return "books/list-books"; 
+        return "/books/list-books"; 
     }
 
     @GetMapping("/showFormforAdd")

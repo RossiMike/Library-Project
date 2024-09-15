@@ -1,6 +1,8 @@
-package com.myproject.library.Book;
+package com.myproject.library.services;
 
 import java.util.List;
+
+import com.myproject.library.entities.Book;
 
 public interface BookService  {
 

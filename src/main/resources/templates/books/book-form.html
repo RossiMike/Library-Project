@@ -45,7 +45,11 @@
         </form>
 
         <hr> 
-        <a th:href="@{/books/list}">Back to Books List</a>
+        <a th:href="@{/books/list}">Back to Books List</a> 
+
+        <form action="#" th:action="@{/logout}" method="POST">
+            <input type="submit" value="Logout">
+        </form>
 
     </div>
 
